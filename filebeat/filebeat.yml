@@ -14,9 +14,19 @@ filebeat.prospectors:
 - input_type: log
   paths:
     - "/logs"
+  document_type: APPLICATION_LOGS
   scan_frequency: 1s
   harvester_buffer_size: 16384
+  multiline.pattern: "^[Running]|(?:Mon(?:day)?|Tue(?:sday)?|Wed(?:nesday)?|Thu(?:rsday)?|Fri(?:day)?|Sat(?:urday)?|Sun(?:day)?)"
+  multiline.negate: true
+  multiline.match: after
 
+- input_type: log
+  paths:
+    - "/docker_stats_logs"
+  document_type: DOCKER_STATS
+  scan_frequency: 1s
+  harvester_buffer_size: 16384
 
 #-------------------------- Elasticsearch output -------------------------------
 #output.elasticsearch:

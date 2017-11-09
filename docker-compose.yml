@@ -42,7 +42,8 @@ services:
   filebeat:
     build: filebeat/
     volumes:
-      - /home/ubuntu/logs:/logs
+      - /home/pratiksha/logs:/logs
+      - /home/pratiksha/docker_stats:/docker_stats_logs
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
