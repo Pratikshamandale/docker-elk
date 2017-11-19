@@ -15,10 +15,33 @@ filebeat.prospectors:
 
 - input_type: log
   paths:
+    - "/cpu_stats_logs"
+  document_type: CPU_STATS
+  scan_frequency: 1s
+  harvester_buffer_size: 16384
+
+- input_type: log
+  paths:
+    - "/disk_stats_logs"
+  document_type: DISK_STATS
+  scan_frequency: 1s
+  harvester_buffer_size: 16384
+
+- input_type: log
+  paths:
+    - "/memory_stats_logs"
+  document_type: MEMORY_STATS
+  scan_frequency: 1s
+  harvester_buffer_size: 16384
+
+- input_type: log
+  paths:
     - "/docker_stats_logs"
   document_type: DOCKER_STATS
   scan_frequency: 1s
   harvester_buffer_size: 16384
+
+
 
 
 #----------------------------- Logstash output ---------------------------------

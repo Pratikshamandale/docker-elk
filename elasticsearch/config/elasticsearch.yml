@@ -23,3 +23,6 @@ xpack.security.enabled: false
 xpack.monitoring.enabled: false
 xpack.ml.enabled: false
 xpack.watcher.enabled: false
+
+http.cors.enabled: true
+http.cors.allow-origin: "*"

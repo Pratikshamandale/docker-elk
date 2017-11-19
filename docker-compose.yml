@@ -43,7 +43,10 @@ services:
     build: filebeat/
     volumes:
       - /var/log/warehouse/web.log:/logs
-      - /home/ubuntu/docker_stats.log:/docker_stats_logs
+      - /home/pratiksha/docker_stats:/docker_stats_logs
+      - /home/pratiksha/memory_stats:/memory_stats_logs
+      - /home/pratiksha/disk_stats:/disk_stats_logs
+      - /home/pratiksha/cpu_stats:/cpu_stats_logs      
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
@@ -51,6 +54,14 @@ services:
     depends_on:
       - logstash
 
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"    
+    environment:
+      GF_INSTALL_PLUGINS: "grafana-piechart-panel"
+    networks:
+      - elk
 
 networks:
 
